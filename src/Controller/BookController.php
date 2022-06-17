@@ -6,6 +6,7 @@ use App\Entity\Author;
 use App\Entity\Book;
 use App\Entity\Category;
 use App\Entity\Editorial;
+use App\Form\BookType;
 use App\Repository\BookRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -113,6 +114,7 @@ class BookController extends AbstractController
         $_editorial_id  = $request->get('editorial', null);
         $_author_id     = $request->get('author', null);
         $_stock         = $request->get('stock', 0);
+        $_priority        = $request->get('priority', 0);
 
         $category       = $this->getDoctrine()->getRepository(Category::class)->findOneById($_category_id);
         $editorial      = $this->getDoctrine()->getRepository(Editorial::class)->findOneById($_editorial_id);
@@ -128,6 +130,7 @@ class BookController extends AbstractController
         $book->setEditorial($editorial);
         $book->setAuthor($author);
         $book->setStock($_stock);
+        $book->setPriority($_priority);
 
         $entityManager->persist($book);
         $entityManager->flush();

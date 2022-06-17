@@ -143,4 +143,9 @@ class Author
         return $this;
     }
 
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+    }
+
 }
