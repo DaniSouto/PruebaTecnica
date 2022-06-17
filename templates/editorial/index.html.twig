@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    <div class="text-center pt-5 pb-5">
+        <h2>{{ 'editorials'|trans|capitalize }}</h2>
+        <table class="table table-striped mt-3">
+            <thead class="table-dark">
+            <th>#</th>
+            <th class="text-start">{{ 'name'|trans|capitalize }}</th>
+            </thead>
+            <tbody>
+            {% for editorial in editorials %}
+                <tr>
+                    <td>{{ editorial.id }}</td>
+                    <td class="text-start">{{ editorial.name }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

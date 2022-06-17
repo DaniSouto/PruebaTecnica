@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    <div class="text-center pt-5 pb-5">
+        <h2>{{ 'books'|trans|capitalize }}</h2>
+
+        {% include 'book/_form.html.twig' with { 'action' : path("app.book.create"), 'errors' : null } %}
+
+    </div>
+{% endblock %}

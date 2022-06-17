@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    <div class="text-center pt-5 pb-5">
+        <h2>{{ 'authors'|trans|capitalize }}</h2>
+        <table class="table table-striped mt-3">
+            <thead class="table-dark">
+                <th>#</th>
+                <th class="text-start">{{ 'name'|trans|capitalize }}</th>
+                <th class="text-start">{{ 'birth'|trans|capitalize }}</th>
+                <th class="text-start">{{ 'age'|trans|capitalize }}</th>
+            </thead>
+            <tbody>
+            {% for author in authors %}
+                <tr>
+                    <td>{{ author.id }}</td>
+                    <td class="text-start">{{ author.name }}</td>
+                    <td class="text-start">{{ author.birth }}</td>
+                    <td class="text-start">{{ author.age }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

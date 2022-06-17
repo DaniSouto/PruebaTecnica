@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    <div class="text-center pt-5 pb-5">
+
+        <h2>{{ 'books'|trans|capitalize }}</h2>
+
+        <div>
+            <form method="post" class="text-end">
+                <input name="search_term" class="form-control input_search" type="text" placeholder="{{ 'search by title'|trans|capitalize }}" value="{{ term }}" >
+                <button class="btn btn-bibliotech d-inline-block" type="submit">{{ 'search'|trans|capitalize }}</button>
+            </form>
+        </div>
+
+        <table class="table table-striped mt-3">
+            <thead class="table-dark">
+            <th>#</th>
+            <th class="text-start">{{ 'title'|trans|capitalize }}</th>
+            <th class="text-start">{{ 'author'|trans|capitalize }}</th>
+            <th class="text-start">{{ 'editorial'|trans|capitalize }}</th>
+            <th class="text-start">{{ 'category'|trans|capitalize }}</th>
+            <th class="text-end">{{ 'stock'|trans|capitalize }}</th>
+            <th class="text-end">{{ 'priority'|trans|capitalize }}</th>
+            <th></th>
+            </thead>
+            <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td class="text-start">{{ book.title }}</td>
+                    <td class="text-start">{% if book.author %}{{ book.author.name }}{% endif %}</td>
+                    <td class="text-start">{% if book.editorial %}{{ book.editorial.name }}{% endif %}</td>
+                    <td class="text-start">{% if book.category %}{{ book.category.name }}{% endif %}</td>
+                    <td class="text-end">{{ book.stock }}</td>
+                    <td class="text-end">{{ book.priority }}</td>
+                    <td class="text-end">
+                        <a href="{{ path('app.book.view', {     'id': book.id }) }}" class="action-button me-2"><i class="fas fa-eye"></i></a>
+                        <a href="{{ path('app.book.remove', {   'id': book.id }) }}" class="action-button me-2"><i class="fas fa-trash-alt"></i></a>
+                        <a href="{{ path('app.book.edit', {     'id': book.id }) }}" class="action-button me-2"><i class="fas fa-pencil-alt"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="div-buttons">
+            <a href="{{ path('app.book.create') }}" class="btn btn-bibliotech">{{ 'create'|trans|capitalize }}</a>
+        </div>
+
+        {% if msg %}
+            <div class="alert alert-success mt-3" role="alert">
+                {{ msg }}
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}

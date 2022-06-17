@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    <div class="text-center pt-5 pb-5">
+        <h2>{{ 'categories'|trans|capitalize }}</h2>
+        <table class="table table-striped mt-3">
+            <thead class="table-dark">
+            <th>#</th>
+            <th class="text-start">{{ 'name'|trans|capitalize }}</th>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.id }}</td>
+                    <td class="text-start">{{ category.name }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    <div class="text-center pt-5 pb-5">
+        <h2>Libros</h2>
+        <div class="container text-start">
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <h3>{{ 'title'|trans|capitalize }}</h3>
+                        <span>{{ book is defined ? book.title : '' }}"</span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="mb-3">
+                        <h3>{{ 'stock'|trans|capitalize }}</h3>
+                        <span>{{ book is defined ? book.stock : 0 }}</span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="mb-3">
+                        <h3>{{ 'priority'|trans|capitalize }}</h3>
+                        <span>{{ book is defined ? book.priority : 0 }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3">
+                    <h3>{{ 'description'|trans|capitalize }}</h3>
+                    <p>{{ book is defined ? book.description : '' }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <h3>{{ 'category'|trans|capitalize }}</h3>
+                        <span>{{ book.category.name }}</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <h3>{{ 'editorial'|trans|capitalize }}</h3>
+                        <span>{{ book.editorial.name }}</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <h3>{{ 'author'|trans|capitalize }}</h3>
+                        <span>{{ book.author.name }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="div-buttons">
+                <a href="{{ path('app.book.index') }}" class="btn btn-bibliotech">{{ 'back'|trans|capitalize }}</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

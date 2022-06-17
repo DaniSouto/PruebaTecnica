@@ -1,0 +1,70 @@
+{% block form %}
+    <form action="{{ action }}" method="post" class="text-start">
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="titleInput" class="form-label">{{ 'title'|trans|capitalize }}</label>
+                    <input type="text" class="form-control" id="titleInput" name="title" placeholder="Título" value="{{ book is defined ? book.title : '' }}">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    <label for="stockInput" class="form-label">{{ 'stock'|trans|capitalize }}</label>
+                    <input type="number" class="form-control" id="stockInput" name="stock" placeholder="Stock" value="{{ book is defined ? book.stock : 0 }}">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    <label for="priorityInput" class="form-label">{{ 'priority'|trans|capitalize }}</label>
+                    <input type="number" class="form-control" id="priorityInput" name="priority" placeholder="Priority" value="{{ book is defined ? book.priority : 0 }}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3">
+                <label for="descriptionTextarea" class="form-label">{{ 'description'|trans|capitalize }}</label>
+                <textarea class="form-control" id="descriptionTextarea" name="description" rows="3">{{ book is defined ? book.description : '' }}</textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="categorySelect" class="form-label">{{ 'category'|trans|capitalize }}</label>
+                    <select id="categorySelect" name="category" class="form-select" aria-label="Categoría">
+                        <option value="0">{{ 'select category'|trans|capitalize }}</option>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}" {% if book is defined %} {% if book.getCategory() %} {{ book.getCategory().id == category.id ? 'selected' : '' }}{% endif %}{% endif %}>{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="editorialSelect" class="form-label">{{ 'editorial'|trans|capitalize }}</label>
+                    <select id="editorialSelect" name="editorial" class="form-select" aria-label="Editorial">
+                        <option value="0">{{ 'select editorial'|trans|capitalize }}</option>
+                        {% for editorial in editorials %}
+                            <option value="{{ editorial.id }}" {% if book is defined %} {% if book.getEditorial() %} {{ book.getEditorial().id == editorial.id ? 'selected' : '' }}{% endif %}{% endif %}>{{ editorial.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="authorSelect" class="form-label">{{ 'author'|trans|capitalize }}</label>
+                    <select id="authorSelect" name="author" class="form-select" aria-label="Autor">
+                        <option value="0">{{ 'select author'|trans|capitalize }}</option>
+                        {% for author in authors %}
+                            <option value="{{ author.id }}" {% if book is defined %} {% if book.getAuthor() %} {{ book.getAuthor().id == author.id ? 'selected' : '' }} {% endif %} {% endif %}>{{ author.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="div-buttons">
+            <a href="{{ path('app.book.index') }}" class="btn btn-bibliotech">{{ 'back'|trans|capitalize }}</a>
+            <button type="submit" class="btn btn-bibliotech">{{ 'save'|trans|capitalize }}</button>
+        </div>
+    </form>
+{% endblock %}

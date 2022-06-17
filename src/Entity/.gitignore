@@ -1,0 +1,12 @@
+/var/cache/*
+/var/logs/*
+/public/build/*
+/vendor/*
+/var/
+/vendor/
+/node_modules/
+composer.lock
+.idea
+package-lock.json
+yarn-error.log
+.phpunit.result.cache

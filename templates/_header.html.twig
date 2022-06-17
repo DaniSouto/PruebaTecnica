@@ -1,0 +1,31 @@
+<header>
+    <div class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand me-5" href="{{ path('app.index') }}">Bibliotech</a>
+            <div class="collapse navbar-collapse ml-5" id="topMenu">
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item ms-2">
+                        <a class="nav-link" href="{{ path('app.book.index') }}">
+                            {{ 'books'|trans|capitalize }}
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="nav-link" href="{{ path('app.author.index') }}">
+                            {{ 'authors'|trans|capitalize }}
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="nav-link" href="{{ path('app.editorial.index') }}">
+                            {{ 'editorials'|trans|capitalize }}
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="nav-link" href="{{ path('app.category.index') }}">
+                            {{ 'categories'|trans|capitalize }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

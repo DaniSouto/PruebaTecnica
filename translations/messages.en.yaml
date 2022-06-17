@@ -1,0 +1,23 @@
+books: books
+authors: authors
+editorials: editorials
+categories: categories
+welcome to bibliotech: Welcome to Bibliotech!
+title: title
+author: author
+editorial: editorial
+category: category
+stock: stock
+search: search
+create: create
+back: back
+save: save
+description: description
+select category: select category
+select editorial: select editorial
+select author: select author
+name: name
+birth: birth
+age: age
+search by title: search by title
+priority: priority
