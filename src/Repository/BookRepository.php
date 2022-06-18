@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Book;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -43,6 +44,28 @@ class BookRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    /**
+     * @return Book[] Returns an array of Book objects
+     */
+    public function findAuthorsIdByCategoryId($categoryId)
+    {
+
+        $rawQuery = 'select bk.author_id from book bk where bk.category_id = :catId';
+
+        $params = array(
+            'catId' => $categoryId
+        );
+
+        $preparedQuery = $this->_em->getConnection()->prepare($rawQuery);
+        $result = $preparedQuery->executeQuery($params)->fetchAll(Query::HYDRATE_ARRAY);
+
+        $authorIdsInCategory = array_column($result, "author_id");
+
+        return $authorIdsInCategory;
+
+    }
+
 
     public function countBooks()
     {

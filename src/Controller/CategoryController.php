@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Author;
+use App\Entity\Book;
 use App\Entity\Category;
 use App\Repository\CategoryRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -39,8 +41,13 @@ class CategoryController extends AbstractController
     public function view(Category $category)
     {
 
+        $bookInCategory = $this->getDoctrine()->getRepository(Book::class)->findAuthorsIdByCategoryId($category->getId());
+
+        $authors = $this->getDoctrine()->getRepository(Author::class)->findByIdList($bookInCategory);
+
         return [
             'category' => $category,
+            'authors'  => $authors,
         ];
     }
 

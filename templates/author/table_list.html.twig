@@ -1,0 +1,30 @@
+{# Listado de autores #}
+{# hasCrudAction (Boolean) -> Muestra u oculta la columna ACTIONS #}
+<table class="table table-striped mt-3">
+    <thead class="table-dark">
+    <th>#</th>
+    <th class="text-start">{{ 'name'|trans|capitalize }}</th>
+    <th class="text-start">{{ 'birth'|trans|capitalize }}</th>
+    <th class="text-start">{{ 'age'|trans|capitalize }}</th>
+    {% if hasCrudAction %}
+    <th class="text-end">{{ 'actions'|trans|capitalize }}</th>
+    {% endif %}
+    </thead>
+    <tbody>
+    {% for author in authors %}
+        <tr>
+            <td>{{ author.id }}</td>
+            <td class="text-start">{{ author.name }}</td>
+            <td class="text-start">{{ author.birth }}</td>
+            <td class="text-start">{{ author.age }}</td>
+            {% if hasCrudAction %}
+            <td class="text-end">
+                <a href="{{ path('app.author.view', {     'id': author.id }) }}" class="action-button me-2"><i class="fas fa-eye"></i></a>
+                <a href="{{ path('app.author.remove', {   'id': author.id }) }}" class="action-button me-2"><i class="fas fa-trash-alt"></i></a>
+                <a href="{{ path('app.author.edit', {     'id': author.id }) }}" class="action-button me-2"><i class="fas fa-pencil-alt"></i></a>
+            </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

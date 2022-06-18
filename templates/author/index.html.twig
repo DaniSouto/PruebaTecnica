@@ -2,30 +2,7 @@
 {% block main %}
     <div class="text-center pt-5 pb-5">
         <h2>{{ 'authors'|trans|capitalize }}</h2>
-        <table class="table table-striped mt-3">
-            <thead class="table-dark">
-                <th>#</th>
-                <th class="text-start">{{ 'name'|trans|capitalize }}</th>
-                <th class="text-start">{{ 'birth'|trans|capitalize }}</th>
-                <th class="text-start">{{ 'age'|trans|capitalize }}</th>
-                <th class="text-end">{{ 'actions'|trans|capitalize }}</th>
-            </thead>
-            <tbody>
-            {% for author in authors %}
-                <tr>
-                    <td>{{ author.id }}</td>
-                    <td class="text-start">{{ author.name }}</td>
-                    <td class="text-start">{{ author.birth }}</td>
-                    <td class="text-start">{{ author.age }}</td>
-                    <td class="text-end">
-                        <a href="{{ path('app.author.view', {     'id': author.id }) }}" class="action-button me-2"><i class="fas fa-eye"></i></a>
-                        <a href="{{ path('app.author.remove', {   'id': author.id }) }}" class="action-button me-2"><i class="fas fa-trash-alt"></i></a>
-                        <a href="{{ path('app.author.edit', {     'id': author.id }) }}" class="action-button me-2"><i class="fas fa-pencil-alt"></i></a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        {% include 'author/table_list.html.twig' with {'hasCrudAction':true} %}
 
         <div class="div-buttons">
             <a href="{{ path('app.author.create') }}" class="btn btn-bibliotech">{{ 'create'|trans|capitalize }}</a>

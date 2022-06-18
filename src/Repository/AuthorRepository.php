@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Author;
+use App\Entity\Book;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -27,6 +28,21 @@ class AuthorRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
             ;
+    }
+
+    /**
+     * @return Author[] Returns an array of Author objects
+     */
+    public function findByIdList($authorIdList)
+    {
+
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.id IN (:authorIdList)')
+            ->setParameter('authorIdList', $authorIdList)
+            ->getQuery()
+            ->getResult()
+            ;
+
     }
 
     public function createDummyData()

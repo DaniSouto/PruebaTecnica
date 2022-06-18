@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    <div class="text-center pt-5 pb-5">
+        <h2>{{ 'author'|trans|capitalize }}</h2>
+        <div class="container text-start">
+            <div class="row">
+                <div class="col-3">
+                    <div class="mb-3">
+                        <h3>{{ 'name'|trans|capitalize }}</h3>
+                        <span>{{ author is defined ? author.name : '' }}"</span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="mb-3">
+                        <h3>{{ 'birth'|trans|capitalize }}</h3>
+                        <span>{{ author is defined ? author.birth : 0 }}</span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="mb-3">
+                        <h3>{{ 'age'|trans|capitalize }}</h3>
+                        <p>{{ author is defined ? author.age : '' }}</p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="mb-3">
+                        <h3>{{ 'priority'|trans|capitalize }}</h3>
+                        <span>{{ author is defined ? author.priority : 0 }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="div-buttons">
+                <a href="{{ path('app.author.index') }}" class="btn btn-bibliotech">{{ 'back'|trans|capitalize }}</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
