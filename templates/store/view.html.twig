@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block main %}
     <div class="text-center pt-5 pb-5">
-        <h2>{{ 'category'|trans|capitalize }}</h2>
+        <h2>{{ 'store'|trans|capitalize }}</h2>
         <div class="container text-start">
             <div class="row">
                 <div class="col-2"></div>
@@ -34,13 +34,14 @@
             </div>
 
             <div class="row">
-                <h3>{{ 'stock'|trans|capitalize }}</h3>
-
+                <h3 class="table-extra">{{ 'stock'|trans|capitalize }}</h3>
+                {% include 'stock/table_list.html.twig' with {'hasCrudAction':true, 'hasUnitsColumn':false} %}
             </div>
 
 
             <div class="div-buttons">
                 <a href="{{ path('app.category.index') }}" class="btn btn-bibliotech btn-bibliotech-back">{{ 'back'|trans|capitalize }}</a>
+                <a href="{{ path('app.stock.create') }}" class="btn btn-bibliotech btn-create">{{ 'add stock'|trans|capitalize }}</a>
             </div>
         </div>
     </div>

@@ -2,30 +2,7 @@
 {% block main %}
     <div class="text-center pt-5 pb-5">
         <h2>{{ 'store'|trans|capitalize }}</h2>
-        <table class="table table-striped mt-3">
-            <thead class="table-dark">
-            <th>#</th>
-            <th class="text-start">{{ 'name'|trans|capitalize }}</th>
-            <th class="text-start">{{ 'city'|trans|capitalize }}</th>
-            <th class="text-start">{{ 'address'|trans|capitalize }}</th>
-            <th class="text-end">{{ 'actions'|trans|capitalize }}</th>
-            </thead>
-            <tbody>
-            {% for store in stores %}
-                <tr>
-                    <td>{{ store.id }}</td>
-                    <td class="text-start">{% if store.name %}{{ store.name }}{% endif %}</td>
-                    <td class="text-start">{% if store.city %}{{ store.city }}{% endif %}</td>
-                    <td class="text-start">{% if store.address %}{{ store.address }}{% endif %}</td>
-                    <td class="text-end">
-                        <a href="{{ path('app.store.view', {     'id': store.id }) }}" class="action-button me-2"><i class="fas fa-eye"></i></a>
-                        <a href="{{ path('app.store.remove', {   'id': store.id }) }}" class="action-button me-2"><i class="fas fa-trash-alt"></i></a>
-                        <a href="{{ path('app.store.edit', {     'id': store.id }) }}" class="action-button me-2"><i class="fas fa-pencil-alt"></i></a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        {% include 'store/table_list.html.twig' with {'hasCrudAction':true, 'hasUnitsColumn':false} %}
 
         <div class="div-buttons">
             <a href="{{ path('app.store.create') }}" class="btn btn-bibliotech btn-create">{{ 'create'|trans|capitalize }}</a>

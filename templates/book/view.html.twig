@@ -50,6 +50,11 @@
                 </div>
             </div>
 
+            <div class="row">
+                <h3 class="table-extra">{{ 'stock in stores'|trans|capitalize }}</h3>
+                {% include 'store/table_list.html.twig' with {'hasCrudAction':false, 'hasUnitsColumn':true} %}
+            </div>
+
             <div class="div-buttons">
                 <a href="{{ path('app.book.index') }}" class="btn btn-bibliotech btn-bibliotech-back">{{ 'back'|trans|capitalize }}</a>
             </div>

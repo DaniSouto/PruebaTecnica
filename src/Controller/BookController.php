@@ -6,6 +6,8 @@ use App\Entity\Author;
 use App\Entity\Book;
 use App\Entity\Category;
 use App\Entity\Editorial;
+use App\Entity\Stock;
+use App\Entity\Store;
 use App\Form\BookType;
 use App\Repository\BookRepository;
 use App\Repository\CategoryRepository;
@@ -89,23 +91,27 @@ class BookController extends AbstractController
     {
 
         $categories = $this->getDoctrine()
-            ->getRepository(Category::class)
-            ->findAll();
+                                ->getRepository(Category::class)
+                                    ->findAll();
 
         $editorials = $this->getDoctrine()
-            ->getRepository(Editorial::class)
-            ->findAll();
+                                ->getRepository(Editorial::class)
+                                    ->findAll();
 
-        $authors    = $this->getDoctrine()
-            ->getRepository(Author::class)
-            ->findAll();
+        $authors = $this->getDoctrine()
+                            ->getRepository(Author::class)
+                                ->findAll();
 
+        $stores = $this->getDoctrine()
+                            ->getRepository(Stock::class)
+                                ->findStockByBookIdGroupedByStore($book->getId());
 
         return [
             'categories'    => $categories,
             'editorials'    => $editorials,
             'authors'       => $authors,
             'book'          => $book,
+            'stores'        => $stores,
         ];
     }
 

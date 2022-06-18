@@ -20,10 +20,9 @@
             </div>
 
             <div class="row">
-                <h3>{{ 'authors in category'|trans|capitalize }}</h3>
+                <h3 class="table-extra">{{ 'authors in category'|trans|capitalize }}</h3>
                 {% include 'author/table_list.html.twig' with {'hasCrudAction':false} %}
             </div>
-
 
             <div class="div-buttons">
                 <a href="{{ path('app.category.index') }}" class="btn btn-bibliotech btn-bibliotech-back">{{ 'back'|trans|capitalize }}</a>

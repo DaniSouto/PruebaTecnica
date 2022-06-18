@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Stock;
 use App\Entity\Store;
 use App\Repository\StoreRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -39,8 +40,13 @@ class StoreController extends AbstractController
     public function view(Store $store)
     {
 
+        $stoks = $this->getDoctrine()
+                        ->getRepository(Stock::class)
+                            ->findStockByStoreId($store->getId());
+
         return [
-            'store' => $store,
+            'store'  => $store,
+            'stocks' => $stoks,
         ];
     }
 
