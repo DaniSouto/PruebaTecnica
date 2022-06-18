@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Store;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -54,6 +55,26 @@ class StoreRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
             ;
+    }
+
+    /**
+     * @return Book[] Returns an array of Book objects
+     */
+    public function findByTitle($partialTitle)
+    {
+
+        $rawQuery = "select str.* 
+                     from stock as stck 
+                     left join book as bk on bk.id = stck.book_id 
+                     left join store as str on str.id = stck.store_id
+                     where bk.title LIKE '%".$partialTitle."%' and units>0 
+                     group by str.id";
+
+        $preparedQuery = $this->_em->getConnection()->prepare($rawQuery);
+        $result = $preparedQuery->executeQuery()->fetchAll(Query::HYDRATE_ARRAY);
+
+        return $result;
+
     }
 
     // /**

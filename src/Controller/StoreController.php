@@ -23,12 +23,20 @@ class StoreController extends AbstractController
     public function index(Request $request, StoreRepository $repository)
     {
 
-        $stores = $repository->findAll();
-        $msg     = $request->get('msg', null);
+        $term_title = $request->get('search_term_title', null);
+        $msg        = $request->get('msg', null);
+        $stores      = null;
+
+        if($term_title){
+            $stores = $repository->findByTitle($term_title);
+        }else{
+            $stores = $repository->findAll();
+        }
 
         return [
-            'stores' => $stores,
-            'msg'     => $msg
+            'term_title' => $term_title,
+            'stores'     => $stores,
+            'msg'        => $msg
         ];
 
     }

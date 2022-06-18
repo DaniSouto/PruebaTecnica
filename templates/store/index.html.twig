@@ -1,8 +1,22 @@
 {% extends 'base.html.twig' %}
 {% block main %}
     <div class="text-center pt-5 pb-5">
-        <h2>{{ 'store'|trans|capitalize }}</h2>
-        {% include 'store/table_list.html.twig' with {'hasCrudAction':true, 'hasUnitsColumn':false} %}
+
+        <div class="row">
+            <h2>{{ 'store'|trans|capitalize }}</h2>
+            <form method="post" class="text-end row">
+                <div class="col-lg-6">
+                    <input name="search_term_title" class="form-control input_search" type="text" placeholder="{{ 'search by title'|trans|capitalize }}" value="{{ term_title }}" >
+                </div>
+                <div class="col-lg-6"></div>
+                <div class="col-lg-12"><br></div>
+                <div class="col-lg-12 text-center">
+                    <button class="btn btn-bibliotech d-inline-block btn-bibliotech-search" type="submit">{{ 'search'|trans|capitalize }}</button>
+                </div>
+                <div class="col-lg-12"><br></div>
+            </form>
+            {% include 'store/table_list.html.twig' with {'hasCrudAction':true, 'hasUnitsColumn':false} %}
+        </div>
 
         <div class="div-buttons">
             <a href="{{ path('app.store.create') }}" class="btn btn-bibliotech btn-create">{{ 'create'|trans|capitalize }}</a>
