@@ -46,11 +46,7 @@
             <a href="{{ path('app.book.create') }}" class="btn btn-bibliotech">{{ 'create'|trans|capitalize }}</a>
         </div>
 
-        {% if msg %}
-            <div class="alert alert-success mt-3" role="alert">
-                {{ msg }}
-            </div>
-        {% endif %}
+        {% include 'partials/_msg.html.twig' %}
 
     </div>
 {% endblock %}

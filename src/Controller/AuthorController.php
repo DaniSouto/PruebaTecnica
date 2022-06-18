@@ -21,9 +21,9 @@ class AuthorController extends AbstractController
      */
     public function index(Request $request, AuthorRepository $repository)
     {
-        $authors = $repository->findAll();
-        $msg    = $request->get('msg', null);
 
+        $authors = $repository->findAll();
+        $msg     = $request->get('msg', null);
 
         return [
             'authors' => $authors,
@@ -115,7 +115,7 @@ class AuthorController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('app.author.index', [
-            'msg'   => 'Autor creado con éxito.',
+            'msg'   => 'Autor actualizado con éxito.',
         ]);
 
     }
