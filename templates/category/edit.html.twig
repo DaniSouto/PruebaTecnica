@@ -3,7 +3,7 @@
     <div class="text-center pt-5 pb-5">
         <h2>{{ 'category'|trans|capitalize }}</h2>
 
-        {% include 'category/_form.html.twig' with { 'action' : path("app.category.edit", { 'id': category.id }), 'author' : category, 'errors' : null } %}
+        {% include 'category/_form.html.twig' with { 'action' : path("app.category.edit", { 'id': category.id }), 'category' : category, 'errors' : null } %}
 
     </div>
 {% endblock %}

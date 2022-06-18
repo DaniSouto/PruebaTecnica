@@ -1,0 +1,250 @@
+:root {
+    --app-brand-color: #6e8ec1;
+    --app-brand-color: #6e8ec1;
+    --primario-color: #0071c1;
+    --secundario-color: yellow;
+    --terciario-color: #3a3d40;
+    --primario-color-dark: #0a3858;
+    --secundario-color-dark: yellow;
+    --terciario-color-dark: #3a3d40;
+    --primario-bc: #0071c1;
+    --secundario-bc: #2e8b57;
+    --terciario-bc: yellow;
+    --btn-bc: #ffffff;
+    --btn-bc-hover: #1a5233;
+    --btn-bc-active: #5f9ea0;
+    --btn-create: #2e658b;
+    --btn-save: #2e8b57;
+    --btn-back: #6e6e6e;
+    --btn-search: #6495ed;
+    --btn-create-hover: #1c435e;
+    --btn-save-hover: #1a5233;
+    --btn-back-hover: #3e3c3c;
+    --btn-search-hover: #4b76c3;
+}
+
+body{
+
+    background-color: #f4f8fb !important;
+
+}
+
+.navbar{
+
+    border-bottom: 2px solid #696969;
+    background-color: #d3d3d3;
+
+}
+
+.navbar-brand {
+
+    background-color: var(--app-brand-color);
+    font-weight: bold;
+    color: #ffffff;
+    padding: 0 8px;
+    border-radius: 5px;
+    border: 2px solid var(--app-brand-color);
+
+}
+
+.navbar-brand:hover{
+
+    color: var(--app-brand-color);
+    background-color: #ffffff;
+
+}
+
+.navbar-nav > .nav-item{
+
+    background-color: #FFFFFF;
+    border-radius: 5px;
+
+}
+
+.navbar-nav > .nav-item:hover{
+
+    background-color: var(--terciario-color) !important;
+
+}
+
+.navbar-nav > .nav-item:hover > .nav-link {
+
+    color: #ffffff !important;
+
+}
+
+.nav-link {
+
+    color: var(--terciario-color) !important;
+
+}
+
+.app-title-welcome{
+
+    font-size: 25px;
+    font-weight: 500;
+    color: #ffffff;
+
+}
+
+.app-title-welcome-container{
+
+    background-color: var(--app-brand-color);
+    margin-top: 5%;
+    border-radius: 5px;
+
+}
+
+footer{
+
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    background-color: #a9a9a9;
+    padding: 4px 0;
+
+}
+
+.table-dark {
+    --bs-table-bg: var(--primario-color-dark) !Important;
+    --bs-table-striped-bg: #2c3034;
+    --bs-table-striped-color: #fff;
+    --bs-table-active-bg: #373b3e;
+    --bs-table-active-color: #fff;
+    --bs-table-hover-bg: #323539;
+    --bs-table-hover-color: #fff;
+    color: #fff;
+    border-color: #373b3e;
+}
+
+td {
+    font-size: 12px;
+}
+
+.action-button{
+
+    background-color: var(--btn-bc);
+    padding: 5px;
+    border: 2px solid var(--btn-bc-active);
+    border-radius: 100%;
+
+}
+
+.action-button > svg{
+
+    color: var(--btn-bc-active);
+
+}
+
+
+.action-button:hover{
+
+    background-color: var(--btn-bc-active);
+
+}
+
+.action-button:hover > svg{
+
+    color: var(--btn-bc);
+
+}
+
+.btn-bibliotech{
+
+    padding: 0 11px !important;
+    color: #ffffff !important;
+
+}
+
+.div-buttons{
+
+    padding: 15px 0;
+    margin-top: 10px;
+
+}
+
+.btn-create{
+
+    background-color: var(--btn-create) !important;
+    float: right;
+
+}
+
+.btn-bibliotech-save{
+
+    background-color: var(--btn-save) !important;
+    float: right;
+
+}
+
+.btn-bibliotech-back{
+
+    background-color: var(--btn-back) !important;
+
+}
+
+.btn-bibliotech-search{
+
+    background-color: var(--btn-search) !important;
+
+}
+
+.btn-create:hover{
+
+    background-color: var(--btn-create-hover) !important;
+
+}+
+
+ .btn-create:hover{
+
+     background-color: var(--btn-save-hover) !important;
+
+ }
+
+.btn-bibliotech-search:hover{
+
+    background-color: var(--btn-search-hover) !important;
+
+}
+
+.btn-bibliotech-save:hover{
+
+    background-color: var(--btn-save-hover) !important;
+
+}
+
+.btn-bibliotech-back:hover{
+
+    background-color: var(--btn-back-hover) !important;
+
+}
+
+h2 {
+    background-color: #696969;
+    color: #ffffff;
+    padding: 5px 0;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 14px !important;
+    color: #696969;
+    border: 1px solid #a9a9a9;
+    padding: 5px 4px;
+}
+
+span:not('.app-title-welcome'), p {
+    font-size: 15px;
+    padding: 5px;
+    width: 100%;
+    background-color: #f5f5dc;
+    display: block;
+}
+
+.input_search, .select_search{
+
+    font-size: 14px !important;
+    padding: 2px 6px !important;;
+    color: #2f4f4f !important;;
+
+}

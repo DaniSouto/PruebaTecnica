@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Bibliotech{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('build/css/bibliotech.css') }}">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -16,6 +17,7 @@
         {% endblock %}
     </head>
     <body>
+        <div>
             {% block header %}
                 {% include '_header.html.twig' %}
             {% endblock %}

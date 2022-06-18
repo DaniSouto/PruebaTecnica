@@ -1,0 +1,35 @@
+{% block form %}
+    <form action="{{ action }}" method="post" class="text-start">
+        <div class="row">
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="nameInput" class="form-label">{{ 'name'|trans|capitalize }}</label>
+                    <input type="text" class="form-control" id="nameInput" name="name" placeholder="{{ 'name'|trans|capitalize }}" value="{{ store is defined ? store.name : '' }}">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    <label for="cityInput" class="form-label">{{ 'city'|trans|capitalize }}</label>
+                    <input type="text" class="form-control" id="cityInput" name="city" placeholder="{{ 'city'|trans|capitalize }}" value="{{ store is defined ? store.city : "" }}">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    <label for="priorityInput" class="form-label">{{ 'priority'|trans|capitalize }}</label>
+                    <input type="number" class="form-control" id="priorityInput" name="priority" placeholder="Priority" value="{{ store is defined ? store.priority : 0 }}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3">
+                <label for="addressInput" class="form-label">{{ 'address'|trans|capitalize }}</label>
+                <input type="text" class="form-control" id="addressInput" name="address" placeholder="{{ 'address'|trans|capitalize }}" value="{{ store is defined ? store.address : "" }}">
+            </div>
+        </div>
+
+        <div class="div-buttons">
+            <a href="{{ path('app.store.index') }}" class="btn btn-bibliotech">{{ 'back'|trans|capitalize }}</a>
+            <button type="submit" class="btn btn-bibliotech">{{ 'save'|trans|capitalize }}</button>
+        </div>
+    </form>
+{% endblock %}

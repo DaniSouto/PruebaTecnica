@@ -4,24 +4,38 @@
         <h2>{{ 'category'|trans|capitalize }}</h2>
         <div class="container text-start">
             <div class="row">
-                <div class="col-3"></div>
+                <div class="col-2"></div>
                 <div class="col-3">
                     <div class="mb-3">
                         <h3>{{ 'name'|trans|capitalize }}</h3>
-                        <span>{{ category is defined ? category.name : '' }}"</span>
+                        <span>{{ store is defined ? store.name : '' }}"</span>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="mb-3">
+                        <h3>{{ 'city'|trans|capitalize }}</h3>
+                        <span>{{ store is defined ? store.city : '' }}"</span>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="mb-3">
                         <h3>{{ 'priority'|trans|capitalize }}</h3>
-                        <span>{{ category is defined ? category.priority : 0 }}</span>
+                        <span>{{ store is defined ? store.priority : 0 }}</span>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-2"></div>
+                <div class="col-6">
+                    <div class="mb-12">
+                        <h3>{{ 'address'|trans|capitalize }}</h3>
+                        <span>{{ store is defined ? store.address : "" }}</span>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <h3>{{ 'authors in category'|trans|capitalize }}</h3>
-                {% include 'author/table_list.html.twig' with {'hasCrudAction':false} %}
+                <h3>{{ 'stock'|trans|capitalize }}</h3>
+
             </div>
 
 

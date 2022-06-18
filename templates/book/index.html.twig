@@ -5,9 +5,39 @@
         <h2>{{ 'books'|trans|capitalize }}</h2>
 
         <div>
-            <form method="post" class="text-end">
-                <input name="search_term" class="form-control input_search" type="text" placeholder="{{ 'search by title'|trans|capitalize }}" value="{{ term }}" >
-                <button class="btn btn-bibliotech d-inline-block" type="submit">{{ 'search'|trans|capitalize }}</button>
+            <form method="post" class="text-end row">
+                <div class="col-lg-3">
+                    <input name="search_term_title" class="form-control input_search" type="text" placeholder="{{ 'search by title'|trans|capitalize }}" value="{{ term_title }}" >
+                </div>
+                <div class="col-lg-3">
+                    <select id="authorSelect" name="search_term_author" class="form-select select_search" aria-label="Autor">
+                        <option value="0">{{ 'select author'|trans|capitalize }}</option>
+                        {% for author in authors %}
+                            <option value="{{ author.id }}" {% if book is defined %} {% if book.getAuthor() %} {{ book.getAuthor().id == author.id ? 'selected' : '' }} {% endif %} {% endif %}>{{ author.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-lg-3">
+                    <select id="editorialSelect" name="search_term_editorial" class="form-select select_search" aria-label="Editorial">
+                        <option value="0">{{ 'select editorial'|trans|capitalize }}</option>
+                        {% for editorial in editorials %}
+                            <option value="{{ editorial.id }}" {% if book is defined %} {% if book.getEditorial() %} {{ book.getEditorial().id == editorial.id ? 'selected' : '' }}{% endif %}{% endif %}>{{ editorial.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-lg-3">
+                    <select id="categorySelect" name="search_term_category" class="form-select select_search" aria-label="Categoría">
+                        <option value="0">{{ 'select category'|trans|capitalize }}</option>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}" {% if book is defined %} {% if book.getCategory() %} {{ book.getCategory().id == category.id ? 'selected' : '' }}{% endif %}{% endif %}>{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-lg-12"><br></div>
+                <div class="col-lg-9"></div>
+                <div class="col-lg-3">
+                    <button class="btn btn-bibliotech d-inline-block btn-bibliotech-search" type="submit">{{ 'search'|trans|capitalize }}</button>
+                </div>
             </form>
         </div>
 
@@ -43,7 +73,7 @@
         </table>
 
         <div class="div-buttons">
-            <a href="{{ path('app.book.create') }}" class="btn btn-bibliotech">{{ 'create'|trans|capitalize }}</a>
+            <a href="{{ path('app.book.create') }}" class="btn btn-bibliotech btn-create">{{ 'create'|trans|capitalize }}</a>
         </div>
 
         {% include 'partials/_msg.html.twig' %}

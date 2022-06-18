@@ -27,21 +27,56 @@ class BookController extends AbstractController
      */
     public function indexAction(Request $request, BookRepository $repository)
     {
-        $term   = $request->get('search_term', null);
+        $term_title     = $request->get('search_term_title', null);
+        $term_author    = $request->get('search_term_author', null);
+        $term_editorial = $request->get('search_term_editorial', null);
+        $term_category  = $request->get('search_term_category', null);
+
         $msg    = $request->get('msg', null);
         $books  = null;
 
-        if($term){
-            $books = $repository->findByTitle($term);
+        if($term_title){
+            $books = $repository->findByTitle($term_title);
         }
-        else {
+
+        if($term_author){
+            $books = $repository->findByAuthor($term_author);
+        }
+
+        if($term_editorial){
+            $books = $repository->findByEditorial($term_editorial);
+        }
+
+        if($term_category){
+            $books = $repository->findByCategory($term_category);
+        }
+
+        if($books==null){
             $books = $repository->findAll();
         }
 
+        $categories = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findAll();
+
+        $editorials = $this->getDoctrine()
+            ->getRepository(Editorial::class)
+            ->findAll();
+
+        $authors    = $this->getDoctrine()
+            ->getRepository(Author::class)
+            ->findAll();
+
         return [
-            'books' => $books,
-            'msg'   => $msg,
-            'term'  => $term,
+            'books'           => $books,
+            'categories'      => $categories,
+            'editorials'      => $editorials,
+            'authors'         => $authors,
+            'term_title'      => $term_title,
+            'term_author'     => $term_author,
+            'term_editorial'  => $term_editorial,
+            'term_category'   => $term_category,
+            'msg'             => $msg,
         ];
 
     }

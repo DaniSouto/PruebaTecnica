@@ -9,26 +9,27 @@
             </div>
             <div class="col-3">
                 <div class="mb-3">
+                    <label for="birthInput" class="form-label">{{ 'birth'|trans|capitalize }}</label>
+                    <input type="number" class="form-control" id="birthInput" name="birth" placeholder="Birth" value="{{ author is defined ? author.birth : 0 }}">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    <label for="ageInput" class="form-label">{{ 'age'|trans|capitalize }}</label>
+                    <input type="number" class="form-control" id="ageInput" name="age" placeholder="Priority" value="{{ author is defined ? author.priority : 0 }}">
+                </div>
+            </div>
+            <div class="col-9"></div>
+            <div class="col-3">
+                <div class="mb-3">
                     <label for="priorityInput" class="form-label">{{ 'priority'|trans|capitalize }}</label>
                     <input type="number" class="form-control" id="priorityInput" name="priority" placeholder="Priority" value="{{ author is defined ? author.priority : 0 }}">
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="mb-3">
-                <label for="birthInput" class="form-label">{{ 'birth'|trans|capitalize }}</label>
-                <input type="number" class="form-control" id="birthInput" name="birth" placeholder="Birth" value="{{ author is defined ? author.birth : 0 }}">
-            </div>
-        </div>
-        <div class="row">
-            <div class="mb-3">
-                <label for="ageInput" class="form-label">{{ 'age'|trans|capitalize }}</label>
-                <input type="number" class="form-control" id="ageInput" name="age" placeholder="Priority" value="{{ author is defined ? author.priority : 0 }}">
-            </div>
-        </div>
         <div class="div-buttons">
-            <a href="{{ path('app.author.index') }}" class="btn btn-bibliotech">{{ 'back'|trans|capitalize }}</a>
-            <button type="submit" class="btn btn-bibliotech">{{ 'save'|trans|capitalize }}</button>
+            <a href="{{ path('app.author.index') }}" class="btn btn-bibliotech btn-bibliotech-back">{{ 'back'|trans|capitalize }}</a>
+            <button type="submit" class="btn btn-bibliotech btn-bibliotech-save">{{ 'save'|trans|capitalize }}</button>
         </div>
     </form>
 {% endblock %}
