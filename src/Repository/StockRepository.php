@@ -124,4 +124,5 @@ class StockRepository extends ServiceEntityRepository
         ;
     }
     */
+
 }
