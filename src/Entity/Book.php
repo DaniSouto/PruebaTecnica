@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Process\Exception\InvalidArgumentException;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @ORM\Entity(repositoryClass=BookRepository::class)
@@ -185,4 +187,37 @@ class Book
     {
         return $this->deletedAt;
     }
+
+    /**
+     * This function adds stock to book stock column, which is where stock is centralized
+     * @param Book obj
+     * @param Integer value for addition
+     * @return Integer total amount of book stock
+     */
+    public function addStock(Book $book, $units){
+
+        $updatedBookStock = null;
+
+        if(!$book instanceof Book){
+            throw new InvalidArgumentException('Obj is not a book');
+            return null;
+        }
+
+        $currentBookStock = $book->getStock();
+
+        if(is_nan($currentBookStock) || is_nan($units)){
+            throw new InvalidArgumentException('Values are not numbers');
+            return null;
+        }
+
+        $updatedBookStock = intval($units) + intval($currentBookStock);
+
+        if(is_nan($updatedBookStock)){
+            return null;
+        }else{
+            return $updatedBookStock;
+        }
+
+    }
+
 }

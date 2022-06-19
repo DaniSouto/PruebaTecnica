@@ -60,10 +60,10 @@ class AuthorController extends AbstractController
     public function storeAction(Request $request)
     {
 
-        $_name         = $request->get('name', null);
-        $_priority   = $request->get('priority', null);
-        $_birth   = $request->get('birth', null);
-        $_age  = $request->get('age', null);
+        $_name     = $request->get('name', null);
+        $_priority = $request->get('priority', null);
+        $_birth    = $request->get('birth', null);
+        $_age      = $request->get('age', null);
 
         $entityManager  = $this->getDoctrine()->getManager();
 

@@ -1,0 +1,47 @@
+{# Listado de autores #}
+{# hasCrudAction (Boolean) -> Muestra u oculta la columna ACTIONS #}
+{# hasUnitsColumn (Boolean) -> Muestra u oculta la columna Units #}
+<table class="table table-striped mt-3">
+    <thead class="table-dark">
+    <th>#</th>
+    <th class="text-start">{{ 'name'|trans|capitalize }}</th>
+    <th class="text-start">{{ 'city'|trans|capitalize }}</th>
+    <th class="text-start">{{ 'address'|trans|capitalize }}</th>
+    {% if hasUnitsColumn %}
+        <th class="text-end">{{ 'units'|trans|capitalize }}</th>
+    {% endif %}
+    {% if hasCrudAction %}
+        <th class="text-end">{{ 'actions'|trans|capitalize }}</th>
+    {% endif %}
+    </thead>
+    <tbody>
+    {% for store in stores %}
+        <tr>
+            <td>{{ store.id }}</td>
+            <td class="text-start">{% if store.name %}{{ store.name }}{% endif %}</td>
+            <td class="text-start">{% if store.city %}{{ store.city }}{% endif %}</td>
+            <td class="text-start">{% if store.address %}{{ store.address }}{% endif %}</td>
+            {% if hasUnitsColumn %}
+            <td class="text-end">{% if store.units %}{{ store.units }}{% endif %}</td>
+            {% endif %}
+            {% if hasCrudAction %}
+            <td class="text-end">
+                <a href="{{ path('app.store.view', {     'id': store.id }) }}" class="action-button me-2"><i class="fas fa-eye"></i></a>
+                <a href="{{ path('app.store.remove', {   'id': store.id }) }}" class="action-button me-2"><i class="fas fa-trash-alt"></i></a>
+                <a href="{{ path('app.store.edit', {     'id': store.id }) }}" class="action-button me-2"><i class="fas fa-pencil-alt"></i></a>
+            </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    {% if hasUnitsColumn %}
+        {% if stores|length <=0 %}
+            <td>{{ 'no stock'|trans|capitalize }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        {% endif %}
+    {% endif %}
+    </tbody>
+
+</table>

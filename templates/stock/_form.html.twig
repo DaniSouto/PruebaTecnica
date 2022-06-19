@@ -1,0 +1,36 @@
+{% block form %}
+    <form action="{{ action }}" method="post" class="text-start">
+        <div class="row">
+            <div class="col-3">
+                <label for="store" class="form-label">{{ 'store'|trans|capitalize }}</label>
+                <select id="storeSelect" name="store" class="form-select" aria-label="{{ 'store'|trans|capitalize }}" required>
+                    <option value="">{{ 'select store'|trans|capitalize }}</option>
+                    {% for store in stores %}
+                        <option value="{{ store.id }}" >{{ store.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-6">
+                <label for="book" class="form-label">{{ 'book'|trans|capitalize }}</label>
+                <select id="bookSelect" name="book" class="form-select" aria-label="{{ 'book'|trans|capitalize }}" required>
+                    <option value="">{{ 'select book'|trans|capitalize }}</option>
+                    {% for book in books %}
+                        <option value="{{ book.id }}" >{{ book.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    <label for="unitsInput" class="form-label">{{ 'units'|trans|capitalize }}</label>
+                    <input type="number" class="form-control" id="unitsInput" name="units" placeholder="{{ 'units'|trans|capitalize }}" value="{{ store is defined ? store.priority : 0 }}" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="div-buttons">
+            <a href="javascript:history.back();" class="btn btn-bibliotech btn-bibliotech-back">{{ 'back'|trans|capitalize }}</a>
+            <button type="submit" class="btn btn-bibliotech btn-create">{{ 'add stock'|trans|capitalize }}</button>
+        </div>
+
+    </form>
+{% endblock %}

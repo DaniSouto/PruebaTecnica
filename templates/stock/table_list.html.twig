@@ -1,0 +1,24 @@
+{# Listado de autores #}
+{# hasCrudAction (Boolean) -> Muestra u oculta la columna ACTIONS #}
+<table class="table table-striped mt-3">
+    <thead class="table-dark">
+    <th>#</th>
+    <th class="text-start">{{ 'title'|trans|capitalize }}</th>
+    <th class="text-start">{{ 'author'|trans|capitalize }}</th>
+    <th class="text-start">{{ 'editorial'|trans|capitalize }}</th>
+    <th class="text-start">{{ 'category'|trans|capitalize }}</th>
+    <th class="text-end">{{ 'units'|trans|capitalize }}</th>
+    </thead>
+    <tbody>
+    {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.id }}</td>
+            <td class="text-start">{{ stock.title }}</td>
+            <td class="text-start">{{ stock.author }}</td>
+            <td class="text-start">{{ stock.editorial }}</td>
+            <td class="text-start">{{ stock.category }}</td>
+            <td class="text-end">{{ stock.units }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
