@@ -58,16 +58,16 @@ class BookController extends AbstractController
         }
 
         $categories = $this->getDoctrine()
-            ->getRepository(Category::class)
-            ->findAll();
+                                ->getRepository(Category::class)
+                                    ->findAll();
 
         $editorials = $this->getDoctrine()
-            ->getRepository(Editorial::class)
-            ->findAll();
+                                ->getRepository(Editorial::class)
+                                    ->findAll();
 
         $authors    = $this->getDoctrine()
-            ->getRepository(Author::class)
-            ->findAll();
+                                ->getRepository(Author::class)
+                                    ->findAll();
 
         return [
             'books'           => $books,
@@ -90,28 +90,33 @@ class BookController extends AbstractController
     public function viewAction(Book $book)
     {
 
-        $categories = $this->getDoctrine()
+        $categories =  $this->getDoctrine()
                                 ->getRepository(Category::class)
                                     ->findAll();
 
-        $editorials = $this->getDoctrine()
+        $editorials =  $this->getDoctrine()
                                 ->getRepository(Editorial::class)
                                     ->findAll();
 
-        $authors = $this->getDoctrine()
-                            ->getRepository(Author::class)
-                                ->findAll();
+        $authors =     $this->getDoctrine()
+                                ->getRepository(Author::class)
+                                    ->findAll();
 
-        $stores = $this->getDoctrine()
-                            ->getRepository(Stock::class)
-                                ->findStockByBookIdGroupedByStore($book->getId());
+        $stores =      $this->getDoctrine()
+                                ->getRepository(Stock::class)
+                                    ->findStockByBookIdGroupedByStore($book->getId());
+
+        $suggestions = $this->getDoctrine()
+                                ->getRepository(Book::class)
+                                    ->findSuggestionsByBookOrderedByPriority($book);
 
         return [
-            'categories'    => $categories,
-            'editorials'    => $editorials,
-            'authors'       => $authors,
-            'book'          => $book,
-            'stores'        => $stores,
+            'categories'  => $categories,
+            'editorials'  => $editorials,
+            'authors'     => $authors,
+            'book'        => $book,
+            'stores'      => $stores,
+            'suggestions' => $suggestions,
         ];
     }
 
@@ -239,7 +244,7 @@ class BookController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('app.book.index', [
-            'msg'   => 'Libro creado con éxito.',
+            'msg'   => 'Libro editado con éxito.',
         ]);
     }
 

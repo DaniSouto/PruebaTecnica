@@ -10,7 +10,7 @@
                     <input name="search_term_title" class="form-control input_search" type="text" placeholder="{{ 'search by title'|trans|capitalize }}" value="{{ term_title }}" >
                 </div>
                 <div class="col-lg-3">
-                    <select id="authorSelect" name="search_term_author" class="form-select select_search" aria-label="Autor">
+                    <select id="authorSelect" name="search_term_author" class="form-select select_search" aria-label="{{ 'author'|trans|capitalize }}">
                         <option value="0">{{ 'select author'|trans|capitalize }}</option>
                         {% for author in authors %}
                             <option value="{{ author.id }}" {% if book is defined %} {% if book.getAuthor() %} {{ book.getAuthor().id == author.id ? 'selected' : '' }} {% endif %} {% endif %}>{{ author.name }}</option>
@@ -18,7 +18,7 @@
                     </select>
                 </div>
                 <div class="col-lg-3">
-                    <select id="editorialSelect" name="search_term_editorial" class="form-select select_search" aria-label="Editorial">
+                    <select id="editorialSelect" name="search_term_editorial" class="form-select select_search" aria-label="{{ 'editorial'|trans|capitalize }}">
                         <option value="0">{{ 'select editorial'|trans|capitalize }}</option>
                         {% for editorial in editorials %}
                             <option value="{{ editorial.id }}" {% if book is defined %} {% if book.getEditorial() %} {{ book.getEditorial().id == editorial.id ? 'selected' : '' }}{% endif %}{% endif %}>{{ editorial.name }}</option>
@@ -26,7 +26,7 @@
                     </select>
                 </div>
                 <div class="col-lg-3">
-                    <select id="categorySelect" name="search_term_category" class="form-select select_search" aria-label="Categoría">
+                    <select id="categorySelect" name="search_term_category" class="form-select select_search" aria-label="{{ 'category'|trans|capitalize }}">
                         <option value="0">{{ 'select category'|trans|capitalize }}</option>
                         {% for category in categories %}
                             <option value="{{ category.id }}" {% if book is defined %} {% if book.getCategory() %} {{ book.getCategory().id == category.id ? 'selected' : '' }}{% endif %}{% endif %}>{{ category.name }}</option>

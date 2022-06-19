@@ -5,13 +5,13 @@
             <div class="col-3">
                 <div class="mb-3">
                     <label for="nameInput" class="form-label">{{ 'name'|trans|capitalize }}</label>
-                    <input type="text" class="form-control" id="nameInput" name="name" placeholder="{{ 'name'|trans|capitalize }}" value="{{ category is defined ? category.name : '' }}">
+                    <input type="text" class="form-control" id="nameInput" name="name" placeholder="{{ 'name'|trans|capitalize }}" value="{{ category is defined ? category.name : '' }}" required>
                 </div>
             </div>
             <div class="col-3">
                 <div class="mb-3">
                     <label for="priorityInput" class="form-label">{{ 'priority'|trans|capitalize }}</label>
-                    <input type="number" class="form-control" id="priorityInput" name="priority" placeholder="{{ 'priority'|trans|capitalize }}" value="{{ category is defined ? category.priority : 0 }}">
+                    <input type="number" class="form-control" id="priorityInput" name="priority" placeholder="{{ 'priority'|trans|capitalize }}" value="{{ category is defined ? category.priority : 0 }}" required>
                 </div>
             </div>
         </div>

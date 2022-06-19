@@ -111,6 +111,30 @@ class BookRepository extends ServiceEntityRepository
 
     }
 
+    /**
+     * @return Book[] Returns an array of Book objects
+     */
+    public function findSuggestionsByBookOrderedByPriority(Book $book)
+    {
+
+        $rawQuery = "select title as name, priority from book bk where bk.category_id=:catId union
+                     select name, priority from category
+                     union
+                     select name, priority from editorial where id in (select category_id from book where category_id=:catId)
+                     order by priority ASC
+                     limit 8";
+
+        $params = array(
+            'catId' => $book->getCategoryId()
+        );
+
+        $preparedQuery = $this->_em->getConnection()->prepare($rawQuery);
+        $result = $preparedQuery->executeQuery($params)->fetchAll(Query::HYDRATE_ARRAY);
+
+        return $result;
+
+    }
+
 
     public function countBooks()
     {

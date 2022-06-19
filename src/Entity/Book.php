@@ -119,12 +119,29 @@ class Book
         return $this;
     }
 
+    public function getCategoryId(): ?int
+    {
+        return $this->getCategory()->getId();
+    }
+
     public function getCategory(): ?Category
     {
         return $this->category;
     }
 
     public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSingleCategory()
+    {
+        return $this->category;
+    }
+
+    public function setSingleCategory($category): self
     {
         $this->category = $category;
 

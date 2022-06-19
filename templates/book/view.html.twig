@@ -1,55 +1,64 @@
 {% extends 'base.html.twig' %}
 {% block main %}
     <div class="text-center pt-5 pb-5">
-        <h2>Libros</h2>
+        <h2>{{ 'book'|trans|capitalize }}</h2>
         <div class="container text-start">
             <div class="row">
-                <div class="col-6">
-                    <div class="mb-3">
-                        <h3>{{ 'title'|trans|capitalize }}</h3>
-                        <span>{{ book is defined ? book.title : '' }}"</span>
+                <div class="col-10">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <h3>{{ 'title'|trans|capitalize }}</h3>
+                                <span>{{ book is defined ? book.title : '' }}"</span>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mb-3">
+                                <h3>{{ 'stock'|trans|capitalize }}</h3>
+                                <span>{{ book is defined ? book.stock : 0 }}</span>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mb-3">
+                                <h3>{{ 'priority'|trans|capitalize }}</h3>
+                                <span>{{ book is defined ? book.priority : 0 }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3">
+                            <h3>{{ 'description'|trans|capitalize }}</h3>
+                            <p>{{ book is defined ? book.description : '' }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <h3>{{ 'category'|trans|capitalize }}</h3>
+                                <span>{{ book.category.name }}</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <h3>{{ 'editorial'|trans|capitalize }}</h3>
+                                <span>{{ book.editorial.name }}</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <h3>{{ 'author'|trans|capitalize }}</h3>
+                                <span>{{ book.author.name }}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div class="mb-3">
-                        <h3>{{ 'stock'|trans|capitalize }}</h3>
-                        <span>{{ book is defined ? book.stock : 0 }}</span>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="mb-3">
-                        <h3>{{ 'priority'|trans|capitalize }}</h3>
-                        <span>{{ book is defined ? book.priority : 0 }}</span>
-                    </div>
+                <div class="col-2">
+                    <h3 class="table-extra suggestion-title">{{ 'suggestions'|trans|capitalize }}</h3>
+                    {% for suggestion in suggestions %}
+                        <span class="suggestions-suggestion">{{ suggestion.name }}</span>
+                    {% endfor %}
                 </div>
             </div>
-            <div class="row">
-                <div class="mb-3">
-                    <h3>{{ 'description'|trans|capitalize }}</h3>
-                    <p>{{ book is defined ? book.description : '' }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <h3>{{ 'category'|trans|capitalize }}</h3>
-                        <span>{{ book.category.name }}</span>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <h3>{{ 'editorial'|trans|capitalize }}</h3>
-                        <span>{{ book.editorial.name }}</span>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <h3>{{ 'author'|trans|capitalize }}</h3>
-                        <span>{{ book.author.name }}</span>
-                    </div>
-                </div>
-            </div>
-
             <div class="row">
                 <h3 class="table-extra">{{ 'stock in stores'|trans|capitalize }}</h3>
                 {% include 'store/table_list.html.twig' with {'hasCrudAction':false, 'hasUnitsColumn':true} %}

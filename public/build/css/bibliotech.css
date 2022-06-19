@@ -1,6 +1,6 @@
 :root {
     --app-brand-color: #6e8ec1;
-    --app-brand-color: #6e8ec1;
+    --app-brand-color: #0a3858;
     --primario-color: #0071c1;
     --secundario-color: #d3d3d3 !Important;
     --terciario-color: #3a3d40;
@@ -46,6 +46,7 @@ body{
     border-radius: 5px;
     /*border: 2px solid var(--app-brand-color);*/
     border: 2px solid var(--primario-color-dark) !Important;
+    font-family: sans-serif;
 
 }
 
@@ -248,6 +249,12 @@ h3.table-extra {
 
 }
 
+h3.suggestion-title{
+
+    margin-top: 0 !important;
+
+}
+
 span:not('.app-title-welcome'), p {
     font-size: 15px;
     padding: 5px;
@@ -261,5 +268,17 @@ span:not('.app-title-welcome'), p {
     font-size: 14px !important;
     padding: 2px 6px !important;;
     color: #2f4f4f !important;;
+
+}
+
+.suggestions-suggestion{
+
+    width: 100% !important;
+    display: block;
+    font-size: 12px;
+    background-color: #f5f5dc;
+    padding: 3px;
+    text-transform: uppercase;
+    color: #2f4f4f;
 
 }

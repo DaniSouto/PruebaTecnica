@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Translation\Translator;
 
 /**
  * @Route("/author")
@@ -77,7 +78,7 @@ class AuthorController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('app.author.index', [
-            'msg'   => 'Autor creado con éxito.',
+            'msg'   => 'Autor creado con éxito!',
         ]);
     }
 

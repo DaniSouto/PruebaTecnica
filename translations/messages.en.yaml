@@ -8,6 +8,7 @@ author: author
 editorial: editorial
 category: category
 stock: stock
+add stock: add stock
 search: search
 create: create
 back: back
@@ -16,8 +17,20 @@ description: description
 select category: select category
 select editorial: select editorial
 select author: select author
+select store: select store
+select book: select book
 name: name
 birth: birth
 age: age
 search by title: search by title
 priority: priority
+app.message.success.creation.author: Author successfully created!
+app.message.success.update.author: Author successfully updated!
+actions: actions
+suggestions: suggestions
+city: city
+address: address
+units: units
+authors in category: authors in category
+stores: stores
+store: store

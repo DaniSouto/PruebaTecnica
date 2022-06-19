@@ -8,6 +8,7 @@ author: autor
 editorial: editorial
 category: categoría
 stock: stock
+add stock: añadir stock
 search: buscar
 create: crear
 back: volver
@@ -16,8 +17,20 @@ description: descripción
 select category: seleccione categoría
 select editorial: seleccione editorial
 select author: seleccione autor
+select store: seleccione tienda
+select book: seleccione libro
 name: nombre
 birth: nacimiento
 age: edad
 search by title: Buscar por título
 priority: prioridad
+app.message.success.creation.author: Autor creado con éxito!
+app.message.success.update.author: ¡Autor actualizado con éxito!
+actions: acciones
+suggestions: sugerencias
+city: ciduad
+address: direccion
+units: unidades
+authors in category: autores en la categoría
+stores: tiendas
+store: tienda
